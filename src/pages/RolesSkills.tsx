@@ -42,7 +42,7 @@ export default function RolesSkills() {
       setLoading(true)
       setError(null)
       console.log('Fetching roles from API...')
-      const response = await fetch('https://7ngkk5dj-3000.inc1.devtunnels.ms/api/candidate-role-skills')
+      const response = await fetch('http://localhost:3000/api/candidate-role-skills')
       if (!response.ok) {
         throw new Error(`Failed to fetch roles: ${response.status}`)
       }
@@ -71,7 +71,7 @@ export default function RolesSkills() {
 
     try {
       setAddingRole(true)
-      const response = await fetch('https://7ngkk5dj-3000.inc1.devtunnels.ms/api/candidate-role-skills', {
+      const response = await fetch('http://localhost:3000/api/candidate-role-skills', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ export default function RolesSkills() {
 
     try {
       setDeletingRole({ ...deletingRole, [roleId]: true })
-      const response = await fetch(`https://7ngkk5dj-3000.inc1.devtunnels.ms/api/candidate-role-skills/${roleId}`, {
+      const response = await fetch(`http://localhost:3000/api/candidate-role-skills/${roleId}`, {
         method: 'DELETE',
       })
 
@@ -146,7 +146,7 @@ export default function RolesSkills() {
     try {
       setUpdatingRole({ ...updatingRole, [roleId]: true })
       
-      const response = await fetch(`https://7ngkk5dj-3000.inc1.devtunnels.ms/api/candidate-role-skills/${roleId}`, {
+      const response = await fetch(`http://localhost:3000/api/candidate-role-skills/${roleId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -198,7 +198,7 @@ export default function RolesSkills() {
       // Create new skills array with the new skill
       const updatedSkills = [...role.skills, skillName]
       
-      const response = await fetch(`https://7ngkk5dj-3000.inc1.devtunnels.ms/api/candidate-role-skills/${roleId}`, {
+      const response = await fetch(`http://localhost:3000/api/candidate-role-skills/${roleId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -244,7 +244,7 @@ export default function RolesSkills() {
       // Remove the skill from the skills array
       const updatedSkills = role.skills.filter(skill => skill !== skillName)
       
-      const response = await fetch(`https://7ngkk5dj-3000.inc1.devtunnels.ms/api/candidate-role-skills/${roleId}`, {
+      const response = await fetch(`http://localhost:3000/api/candidate-role-skills/${roleId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -90,7 +90,7 @@ export default function Interview() {
     try {
       setLoading(true)
       setError(null)
-      const response = await fetch('https://7ngkk5dj-3000.inc1.devtunnels.ms/api/candidate-role-skills')
+      const response = await fetch('http://localhost:3000/api/candidate-role-skills')
       if (!response.ok) {
         throw new Error(`Failed to fetch roles: ${response.status}`)
       }
@@ -197,7 +197,7 @@ export default function Interview() {
       formData.append('role', roles.find(r => r._id === selectedRole)?.role || '');
       formData.append('skills', JSON.stringify(selectedSkills));
 
-      const response = await fetch('https://7ngkk5dj-3000.inc1.devtunnels.ms/api/interview-questions/candidate-compatibility', {
+      const response = await fetch('http://localhost:3000/api/interview-questions/candidate-compatibility', {
         method: 'POST',
         body: formData
       });
@@ -262,7 +262,7 @@ export default function Interview() {
         formData.append('pdf', uploadedFile)
       }
 
-      const response = await fetch('https://7ngkk5dj-3000.inc1.devtunnels.ms/api/interview-questions/generate', {
+      const response = await fetch('http://localhost:3000/api/interview-questions/generate', {
         method: 'POST',
         body: formData
       })
@@ -387,7 +387,7 @@ export default function Interview() {
         skills: q.skills
       }))
     };
-    const url = `https://7ngkk5dj-3000.inc1.devtunnels.ms/api/interview-questions/download-pdf?withAnswers=${withAnswers}`;
+    const url = `http://localhost:3000/api/interview-questions/download-pdf?withAnswers=${withAnswers}`;
     try {
       const response = await fetch(url, {
         method: "POST",

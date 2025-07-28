@@ -134,7 +134,7 @@ export default function Candidates() {
   const deleteCandidate = async (candidateId: string) => {
     setDeletingCandidate(candidateId)
     try {
-      const response = await fetch(`https://7ngkk5dj-3000.inc1.devtunnels.ms/api/candidate-resumes/${candidateId}`, {
+      const response = await fetch(`http://localhost:3000/api/candidate-resumes/${candidateId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -185,7 +185,7 @@ export default function Candidates() {
       review: candidate.review || ""
     };
 
-    fetch(`https://7ngkk5dj-3000.inc1.devtunnels.ms/api/candidate-resumes/${id}`, {
+    fetch(`http://localhost:3000/api/candidate-resumes/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -251,7 +251,7 @@ export default function Candidates() {
       params.append('status', mapStatusToAPI(status))
     }
     
-    fetch(`https://7ngkk5dj-3000.inc1.devtunnels.ms/api/candidate-resumes?${params.toString()}`)
+    fetch(`http://localhost:3000/api/candidate-resumes?${params.toString()}`)
       .then(res => res.json())
       .then(data => {
         // Add default status to candidates if not present
@@ -309,7 +309,7 @@ export default function Candidates() {
     }
     setSearchLoading(true)
     setSearchMode(true)
-    fetch('https://7ngkk5dj-3000.inc1.devtunnels.ms/api/candidate-resumes/search', {
+    fetch('http://localhost:3000/api/candidate-resumes/search', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email })
@@ -807,7 +807,7 @@ export default function Candidates() {
                       selectedCandidate.status === "rejected" ? "Rejected" : "In Progress",
               review: reviewData
             };
-            const response = await fetch(`https://7ngkk5dj-3000.inc1.devtunnels.ms/api/candidate-resumes/${selectedCandidate._id}`, {
+            const response = await fetch(`http://localhost:3000/api/candidate-resumes/${selectedCandidate._id}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
