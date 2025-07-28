@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Interview Generator Design System - Corporate Professional Theme */
+
+@layer base {
+  :root {
+    /* Corporate Blue Color Palette */
+    --primary: 214 100% 40%;        /* #0052CC - Primary corporate blue */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+    --primary-light: 214 100% 60%;   /* #2684FF - Lighter blue for accents */
+    
+    /* Professional Grays */
+    --background: 0 0% 100%;         /* Pure white background */
+    --foreground: 220 13% 18%;       /* Dark gray text */
+    
+    --card: 0 0% 100%;              /* White cards */
+    --card-foreground: 220 13% 18%; /* Dark gray card text */
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+    
+    /* Secondary colors for subtle elements */
+    --secondary: 220 14% 96%;        /* Very light gray */
+    --secondary-foreground: 220 13% 18%;
+    
+    --muted: 220 14% 96%;           /* Light gray for muted elements */
+    --muted-foreground: 220 9% 46%; /* Medium gray text */
+    
+    --accent: 214 100% 60%;         /* #2684FF accent blue */
+    --accent-foreground: 0 0% 100%;
+    
+    /* Status colors */
+    --destructive: 0 84% 60%;       /* Red for delete/danger */
+    --destructive-foreground: 0 0% 100%;
+    
+    --success: 142 76% 36%;         /* Green for success states */
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;          /* Orange for warnings */
+    --warning-foreground: 0 0% 100%;
+    
+    /* UI Elements */
+    --border: 220 13% 91%;          /* Light gray borders */
+    --input: 220 13% 91%;           /* Input field borders */
+    --ring: 214 100% 60%;           /* Focus ring color */
+    
+    /* Layout tokens */
+    --radius: 0.5rem;              /* 8px border radius */
+    --radius-lg: 1rem;             /* 16px for larger elements */
+    --radius-xl: 2rem;             /* 32px for buttons */
+    
+    /* Spacing rhythm */
+    --spacing-rhythm: 1.875rem;    /* 30px vertical rhythm */
+    --spacing-gutter: 1.25rem;     /* 20px gutters */
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 13% 18% / 0.05);
+    --shadow: 0 1px 3px 0 hsl(220 13% 18% / 0.1), 0 1px 2px -1px hsl(220 13% 18% / 0.1);
+    --shadow-md: 0 4px 6px -1px hsl(220 13% 18% / 0.1), 0 2px 4px -2px hsl(220 13% 18% / 0.1);
+    
+    /* Sidebar specific */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 13% 18%;
+    --sidebar-primary: 214 100% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 220 13% 18%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 214 100% 60%;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+
+  h1 { @apply text-2xl; }   /* 24px headings */
+  h2 { @apply text-xl; }
+  h3 { @apply text-lg; }
+  
+  /* Body text at 16px */
+  body, p, span, div {
+    @apply text-base;       /* 16px body text */
+  }
+}
+
+@layer components {
+  /* Custom component styles using design system tokens */
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .vertical-rhythm {
+    @apply space-y-7; /* 30px vertical rhythm */
+  }
+  
+  .button-hover {
+    @apply transition-all duration-200 hover:shadow-md hover:-translate-y-0.5;
+  }
+  
+  .elevated-shadow {
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  .compatibility-button {
+    @apply text-foreground hover:text-foreground;
+  }
+  
+  .compatibility-button:hover {
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  .compatibility-button:hover * {
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  .professional-header {
+    @apply border-b border-border/50 pb-6;
+  }
+  
+  .professional-header h1 {
+    @apply text-2xl font-semibold text-foreground;
+  }
+  
+  .professional-header p {
+    @apply text-muted-foreground text-base leading-relaxed;
+  }
+  
+  .header-dot {
+    @apply w-2 h-2 bg-primary rounded-full;
+    animation: pulseColor 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  .header-text-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .header-text-pulse-color {
+    animation: pulseColor 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  }
+  
+  @keyframes pulseColor {
+    0% {
+      color: hsl(var(--primary));
+      text-shadow: 0 0 0 rgba(var(--primary), 0);
+    }
+    25% {
+      color: hsl(var(--primary) / 0.8);
+      text-shadow: 0 0 8px rgba(var(--primary), 0.3);
+    }
+    50% {
+      color: hsl(var(--primary) / 0.6);
+      text-shadow: 0 0 12px rgba(var(--primary), 0.5);
+    }
+    75% {
+      color: hsl(var(--primary) / 0.8);
+      text-shadow: 0 0 8px rgba(var(--primary), 0.3);
+    }
+    100% {
+      color: hsl(var(--primary));
+      text-shadow: 0 0 0 rgba(var(--primary), 0);
+    }
+  }
+  
+  .interview-card {
+    @apply bg-card rounded-lg border border-border shadow-sm p-6;
+    box-shadow: var(--shadow);
+  }
+  
+  .interview-button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 rounded-3xl px-6 py-3 font-medium transition-colors;
+  }
+  
+  .interview-button-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-3xl px-6 py-3 font-medium transition-colors border border-border;
+  }
+  
+  .interview-input {
+    @apply border border-input bg-background px-3 py-2 rounded-lg text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+  
+  .interview-nav-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-sidebar-accent text-sidebar-foreground;
+  }
+  
+  .interview-nav-item:hover {
+    @apply bg-sidebar-accent text-sidebar-accent-foreground shadow-md border border-sidebar-border/50;
+  }
+  
+  .interview-nav-item.active {
+    @apply bg-primary text-primary-foreground;
+  }
+  
+  .interview-nav-item.active:hover {
+    @apply bg-primary/90 text-primary-foreground;
+  }
+  
+  /* Enhanced slider styling */
+  .slider {
+    @apply bg-secondary;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    @apply appearance-none h-5 w-5 rounded-full bg-primary border-2 border-primary-foreground shadow-md cursor-pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    @apply h-5 w-5 rounded-full bg-primary border-2 border-primary-foreground shadow-md cursor-pointer;
+    border: none;
+  }
+  
+  .slider:focus {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+  }
+}
+
+.candidate-avatar-custom {
+  background-color: #f3f4f6 !important; /* Light gray background */
+}
